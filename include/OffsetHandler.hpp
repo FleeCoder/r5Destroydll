@@ -14,6 +14,6 @@ private:
 
 public:
 	static OffsetHandler& GetInstance();
-	DWORD GetCreateInterfaceOff();
+	uintptr_t GetInterfaceOffset();
 	uintptr_t GetOffset(const char* tableName, const char* netVarName);
 };

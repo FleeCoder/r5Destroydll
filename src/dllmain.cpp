@@ -14,14 +14,15 @@ void Console(void)
     FILE* f;
     freopen_s(&f, "CONOUT$", "w", stdout);
     freopen_s(&f, "CONIN$", "r", stdin);
+    HookHandler& hookHandler = HookHandler::GetInstance();
+    hookHandler.LoadInterfaces();
     for (;;)
     {
-        /*HookHandler& hookHandler = HookHandler::GetInstance();
         CEntityList* entityList = hookHandler.GetEntityList();
         std::cout << "EntityList Address: " << entityList << std::endl;
         if (entityList)
-            entityList->PrintEntityList();*/
-        OffsetHandler& offsetHandler = OffsetHandler::GetInstance();
+            entityList->PrintEntityList();
+        //OffsetHandler& offsetHandler = OffsetHandler::GetInstance();
         //uintptr_t health = offsetHandler.GetOffset("DT_Player", "m_iHealth");
         //uintptr_t eyePosOffset = offsetHandler.GetOffset("lol", "lol");
         //std::cout << "Eye Pos Offset: " << eyePosOffset << std::endl;

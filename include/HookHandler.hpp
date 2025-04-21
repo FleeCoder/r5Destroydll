@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include "EntityList.hpp"
+#include "OffsetHandler.hpp"
 
 class HookHandler
 {
@@ -24,6 +25,7 @@ public:
 	static HookHandler& GetInstance();
 	HMODULE GetHModule();
 	uintptr_t GetModuleBaseAddress();
+	void LoadInterfaces();
 	CEntityList* GetEntityList();
 	//static void DeleteInstance();
 	void HookMain();
