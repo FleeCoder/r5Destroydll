@@ -6,14 +6,19 @@
 class OffsetHandler
 {
 private:
-	std::map<std::string, uintptr_t> offsets;
-	DWORD createInterfaceOffset;
+	//std::map<std::string, uintptr_t> offsets;
+	DWORD64 createInterfaceOffset;
+	DWORD64 netVarOffset;
+	DWORD64 numEntitiesOffset;
 
 private:
 	OffsetHandler();
 
 public:
 	static OffsetHandler& GetInstance();
-	uintptr_t GetInterfaceOffset();
-	uintptr_t GetOffset(const char* tableName, const char* netVarName);
+	DWORD64 GetInterfaceOffset();
+	DWORD64 GetNetVarOffset();
+	DWORD64 GetNumEntitiesAddress();
+
+	//uintptr_t GetOffset(const char* tableName, const char* netVarName);
 };

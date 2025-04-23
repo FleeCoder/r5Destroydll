@@ -23,7 +23,9 @@ public:
 	virtual void* UnknwonFun_005() = 0;
 
 	// Returns number of entities currently in use
-	virtual int					NumberOfEntities(bool bIncludeNonNetworkable = false) = 0;
+	virtual int					NumberOfEntities(bool bIncludeNonNetworkable) = 0;
+
+	virtual void* UnknwonFun_006() = 0;
 
 	// Returns highest index actually used
 	virtual int					GetHighestEntityIndex(void) = 0;

@@ -42,17 +42,14 @@
     <ClCompile Include="src\NetVarManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\PatternScanner.cpp">
+    <ClCompile Include="src\OffsetHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\OffsetHandler.cpp">
+    <ClCompile Include="src\MemoryHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\PatternScaner_Cfg.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\AimBot.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -80,9 +77,6 @@
     <ClInclude Include="include\NetVarManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\PatternScaner.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\ViewAngle.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -93,6 +87,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\IEntityList.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MemoryHandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Memory_Cfg.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

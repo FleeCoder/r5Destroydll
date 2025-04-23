@@ -4,6 +4,7 @@
 #include "OffsetHandler.hpp"
 #include "Entity.hpp"
 #include "AimBot.hpp"
+#include "MemoryHandler.hpp"
 //HookHandler* HookHandler::hookHandler = nullptr;
 
 HookHandler::HookHandler()
@@ -44,7 +45,7 @@ T* HookHandler::GetInterface(const char* interfaceName)
 	if (!getInterfaceAddress)
 		throw std::runtime_error("CreateInterface is Null Pointer Exiting!!!");
 	std::cout << "Get Interface Address: " << getInterfaceAddress << std::endl;
-	const auto CreateInterface = *reinterpret_cast<Fn*>(getInterfaceAddress);
+	const auto CreateInterface = MemoryHandler::Read<Fn>(getInterfaceAddress);
 	std::cout << "Create Interface: " << CreateInterface << std::endl;
 	return CreateInterface(interfaceName, nullptr);
 	// std::cout << "1" << std::endl;

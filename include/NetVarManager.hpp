@@ -1,6 +1,5 @@
 #pragma once
 #include <Windows.h>
-#include "PatternScaner_Cfg.hpp"
 
 typedef struct RecvProp RecvProp;
 typedef struct RecvTable RecvTable;
@@ -51,10 +50,9 @@ class NetVarManager
 private:
 	Client* client;
 	NetVarManager();
-	intptr_t GetOffset(RecvTable* table, const char* tableName, const char* netVarName);
+	uintptr_t GetOffset(RecvTable* table, const char* tableName, const char* netVarName);
 
 public:
 	static NetVarManager& GetInstance();
-	bool Initialize();
-	intptr_t GetNetVarOffset(const char* tableName, const char* netVarName);
+	uintptr_t GetNetVarOffset(const char* tableName, const char* netVarName);
 };

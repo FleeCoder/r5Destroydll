@@ -1,7 +1,9 @@
 #include "HackMod_Offsets_Cfg.hpp"
 #include "Entity.hpp"
 #include <iostream>
-#include "OffsetHandler.hpp"
+//#include "OffsetHandler.hpp"
+#include "NetVarManager.hpp"
+#include "MemoryHandler.hpp"
 
 //CEntity::CEntity(int index):health(nullptr),position(nullptr)
 //{
@@ -44,9 +46,10 @@ int CEntity::GetHealth()
 {
 	if (!this)
 		return NULL;
-	OffsetHandler& offsetHandler = OffsetHandler::GetInstance();
-	static DWORD healthOff = offsetHandler.GetOffset("DT_Player", "m_iHealth");
-	return *reinterpret_cast<int*>((uintptr_t)this + healthOff);
+	NetVarManager& netVarManager = NetVarManager::GetInstance();
+	static DWORD64 healthOff = netVarManager.GetNetVarOffset("DT_Player", "m_iHealth");
+	//std::cout << "Player: " << this << "\thealth offset: " << healthOff << std::endl;
+	return MemoryHandler::Read<int>((DWORD64)this + healthOff);
 }
 
 //Vector3* CEntity::GetPosition()

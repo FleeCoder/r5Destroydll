@@ -16,10 +16,10 @@ void Console(void)
     freopen_s(&f, "CONIN$", "r", stdin);
     HookHandler& hookHandler = HookHandler::GetInstance();
     hookHandler.LoadInterfaces();
+    CEntityList* entityList = hookHandler.GetEntityList();
+    std::cout << "EntityList Address: " << entityList << std::endl;
     for (;;)
     {
-        CEntityList* entityList = hookHandler.GetEntityList();
-        std::cout << "EntityList Address: " << entityList << std::endl;
         if (entityList)
             entityList->PrintEntityList();
         //OffsetHandler& offsetHandler = OffsetHandler::GetInstance();

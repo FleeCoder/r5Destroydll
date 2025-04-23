@@ -160,10 +160,10 @@
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\EntityList.cpp" />
+    <ClCompile Include="src\MemoryHandler.cpp" />
     <ClCompile Include="src\HookHandler.cpp" />
     <ClCompile Include="src\LocalPlayer.cpp" />
     <ClCompile Include="src\NetVarManager.cpp" />
-    <ClCompile Include="src\PatternScanner.cpp" />
     <ClCompile Include="src\OffsetHandler.cpp" />
     <ClCompile Include="src\ViewAngle.cpp" />
   </ItemGroup>
@@ -178,11 +178,11 @@
     <ClInclude Include="include\OffsetHandler.hpp" />
     <ClInclude Include="include\ViewAngle_Cfg.hpp" />
     <ClInclude Include="include\ViewAngle.hpp" />
-    <ClInclude Include="include\PatternScaner.hpp" />
+    <ClInclude Include="include\MemoryHandler.hpp" />
     <ClInclude Include="include\NetVarManager.hpp" />
     <ClInclude Include="include\LocalPlayer.hpp" />
     <ClInclude Include="include\HookHandler.hpp" />
-    <ClInclude Include="include\PatternScaner_Cfg.hpp" />
+    <ClInclude Include="include\Memory_Cfg.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
