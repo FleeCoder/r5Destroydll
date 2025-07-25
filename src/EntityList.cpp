@@ -63,16 +63,21 @@
 //	}
 //}
 
+int GetNumberOfEntities()
+{
+	OffsetHandler& offsetHandler = OffsetHandler::GetInstance();
+	return MemoryHandler::Read<int>(offsetHandler.GetNumEntitiesAddress());
+}
+
+constexpr CEntity* CEntityList::GetClientEntity(int entnum) noexcept
+{
+	return MemoryHandler::Call<CEntity*, int>(this, 4, entnum);
+}
+
 void CEntityList::PrintEntityList()
 {
-	HookHandler& hookHandler = HookHandler::GetInstance();
-	OffsetHandler& offsetHandler = OffsetHandler::GetInstance();
-	static int noOfPlayers = MemoryHandler::Read<int>(offsetHandler.GetNumEntitiesAddress());
-	//int noOfPlayers = GetHighestEntityIndex();
+	static int noOfPlayers = GetNumberOfEntities();
 	std::cout << "Number of entities: " << noOfPlayers << std::endl;
-	/*std::cout << "Number of Entities false: " << NumberOfEntities(false) << std::endl;
-	std::cout << "Number of Players true: " << NumberOfEntities(true) << std::endl;
-	std::cout << "Get Highest Entity Index: " << GetHighestEntityIndex() << std::endl;*/
 	for (int i = 1;i <= noOfPlayers;i++)
 	{
 		std::cout << "Entity No: " << i << std::endl;

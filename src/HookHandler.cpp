@@ -7,11 +7,10 @@
 #include "MemoryHandler.hpp"
 //HookHandler* HookHandler::hookHandler = nullptr;
 
-HookHandler::HookHandler()
+HookHandler::HookHandler() :input{ nullptr }, entityList{ nullptr }, engineClient{ nullptr }
 {
 	hModule = GetModuleHandle(nullptr);
 	exeBaseAddress = (uintptr_t)GetModuleHandle(nullptr);
-	entityList = nullptr;
 	//entityList = GetInterface<CEntityList>("VClientEntityList003");
 }
 
@@ -34,6 +33,11 @@ uintptr_t HookHandler::GetModuleBaseAddress()
 CEntityList* HookHandler::GetEntityList()
 {
 	return entityList;
+}
+
+CEngineClient* HookHandler::GetEngineClient()
+{
+	return engineClient;
 }
 
 template<typename T>
@@ -63,7 +67,11 @@ T* HookHandler::GetInterface(const char* interfaceName)
 
 void HookHandler::LoadInterfaces()
 {
-	entityList= GetInterface<CEntityList>("VClientEntityList003");
+	OffsetHandler& offsetHandler = OffsetHandler::GetInstance();
+	entityList = GetInterface<CEntityList>("VClientEntityList003");
+
+	//input = MemoryHandler::Read<CInput*>(exeBaseAddress + offsetHandler.GetInputOffset());
+	engineClient = MemoryHandler::Read<CEngineClient*>(exeBaseAddress + offsetHandler.GetEngineClientOffset());
 }
 
 //void HookHandler::DeleteInstance()

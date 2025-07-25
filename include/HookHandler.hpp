@@ -2,6 +2,8 @@
 #include <Windows.h>
 #include "EntityList.hpp"
 #include "OffsetHandler.hpp"
+#include "Input.hpp"
+#include "EngineClient.hpp"
 
 class HookHandler
 {
@@ -10,6 +12,8 @@ private:
 	HMODULE hModule;
 	uintptr_t exeBaseAddress;
 	CEntityList* entityList;
+	CInput* input;
+	CEngineClient* engineClient;
 
 
 private:
@@ -27,6 +31,7 @@ public:
 	uintptr_t GetModuleBaseAddress();
 	void LoadInterfaces();
 	CEntityList* GetEntityList();
+	CEngineClient* GetEngineClient();
 	//static void DeleteInstance();
 	void HookMain();
 };

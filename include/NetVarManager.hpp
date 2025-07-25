@@ -50,7 +50,7 @@ class NetVarManager
 private:
 	Client* client;
 	NetVarManager();
-	uintptr_t GetOffset(RecvTable* table, const char* tableName, const char* netVarName);
+	uintptr_t GetOffset(RecvTable* table, const char* netVarName);
 
 public:
 	static NetVarManager& GetInstance();

@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <vector>
+#include <iostream>
 
 namespace MemoryHandler
 {
@@ -24,8 +25,19 @@ namespace MemoryHandler
 		}
 		return false;
 	}
+
 	template<typename Return, typename ... Args>
-	constexpr Return Call(void* _this, const uint32_t index, Args ... args) noexcept;
+	constexpr Return Call(void* _this, const uint32_t index, Args ... args) noexcept
+	{
+		using Fn = Return(__thiscall*)(void*, decltype(args)...);
+		std::cout << "Function address: " << (*static_cast<void***>(_this))[index] << std::endl;
+		return (*static_cast<Fn**>(_this))[index](_this, args ...);
+	}
+
+	constexpr void* GetVTableFun(void* _this, uint32_t index) noexcept
+	{
+		return (*static_cast<void***>(_this))[index];
+	}
 
 
     DWORD64 PatternScan(void* hmodule, const char* pattern, int offset, int extra = 0);

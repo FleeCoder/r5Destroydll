@@ -6,6 +6,7 @@
 #include "LocalPlayer.hpp"
 #include "AimBot.hpp"
 #include "OffsetHandler.hpp"
+#include "EngineClient.hpp"
 
 
 void Console(void)
@@ -16,12 +17,18 @@ void Console(void)
     freopen_s(&f, "CONIN$", "r", stdin);
     HookHandler& hookHandler = HookHandler::GetInstance();
     hookHandler.LoadInterfaces();
+    CEngineClient* engineClient = hookHandler.GetEngineClient();
+    std::cout << "Engine Client Address value: " << engineClient << std::endl;
     CEntityList* entityList = hookHandler.GetEntityList();
     std::cout << "EntityList Address: " << entityList << std::endl;
     for (;;)
     {
         if (entityList)
             entityList->PrintEntityList();
+        //std::cout << "Unknown 1: " << engineClient->Unknown0001() << std::endl;
+        //std::cout << "Unknown 2: " << engineClient->Unknown0002() << std::endl;
+        //std::cout << "Unknown 3: " << engineClient->Unknown0003() << std::endl;
+        std::cout << "Unknown 4: " << engineClient->Unknown0004() << std::endl;
         //OffsetHandler& offsetHandler = OffsetHandler::GetInstance();
         //uintptr_t health = offsetHandler.GetOffset("DT_Player", "m_iHealth");
         //uintptr_t eyePosOffset = offsetHandler.GetOffset("lol", "lol");
@@ -32,9 +39,28 @@ void Console(void)
         //AimBot aimBot = AimBot::GetInstance();
         //aimBot.AimBotMain();
         //Sleep(1);
-        /*std::string input;
-        std::cin >> input;
-        if (input == "exit")
+        //std::string input;
+        //std::cin >> input;
+        //if (input == "lookup")
+        //{
+        //    std::cout << "get View Angle function address: " << (uintptr_t)engineClient->GetVtableFunctionAddress(58) - hookHandler.GetModuleBaseAddress();
+        //    ViewAngle viewAngle = engineClient->GetViewAngle();
+        //    std::cout << "view angle: " << viewAngle << std::endl;
+        //    viewAngle.pitch += 10;
+        //    std::cout << "set View Angle function address: " << (uintptr_t)engineClient->GetVtableFunctionAddress(59) - hookHandler.GetModuleBaseAddress();
+        //    engineClient->SetViewAngle(viewAngle);
+        //}
+        //else if (input == "lookright")
+        //{
+        //    std::cout << "get View Angle function address: " << (uintptr_t)engineClient->GetVtableFunctionAddress(58) - hookHandler.GetModuleBaseAddress();
+        //    ViewAngle viewAngle = engineClient->GetViewAngle();
+        //    std::cout << "view angle: " << viewAngle << std::endl;
+        //    viewAngle.yaw += 10;
+        //    std::cout << "set View Angle function address: " << (uintptr_t)engineClient->GetVtableFunctionAddress(59) - hookHandler.GetModuleBaseAddress();
+        //    engineClient->SetViewAngle(viewAngle);
+        //}
+
+        /*if (input == "exit")
             break;
         if (input == "moveup")
         {

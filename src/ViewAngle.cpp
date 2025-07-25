@@ -1,9 +1,16 @@
-#include "ViewAngle_Cfg.hpp"
 #include "ViewAngle.hpp"
+#include "ViewAngle_Cfg.hpp"
 
-ViewAngle::ViewAngle():pitch(0.0),yaw(0.0)
+ViewAngle::ViewAngle() :pitch(0.0), yaw(0.0), roll(0.0)
 {
 
+}
+
+std::ostream& operator<<(std::ostream& os, const ViewAngle& viewAngle)
+{
+    os << "Pitch: "<<viewAngle.pitch << std::endl;
+    os << "Yaw: " << viewAngle.yaw << std::endl;
+    return os;
 }
 
 void ViewAngle::NormalizeAngle()

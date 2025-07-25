@@ -48,7 +48,7 @@ int CEntity::GetHealth()
 		return NULL;
 	NetVarManager& netVarManager = NetVarManager::GetInstance();
 	static DWORD64 healthOff = netVarManager.GetNetVarOffset("DT_Player", "m_iHealth");
-	//std::cout << "Player: " << this << "\thealth offset: " << healthOff << std::endl;
+	std::cout << "health offset: " << healthOff << std::endl;
 	return MemoryHandler::Read<int>((DWORD64)this + healthOff);
 }
 

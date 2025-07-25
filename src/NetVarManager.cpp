@@ -17,7 +17,7 @@ NetVarManager& NetVarManager::GetInstance()
 	return netVarManger;
 }
 
-uintptr_t NetVarManager::GetOffset(RecvTable* table, const char* tableName, const char* netVarName)
+uintptr_t NetVarManager::GetOffset(RecvTable* table, const char* netVarName)
 {
 	for (int i = 0;i < table->nProps;i++)
 	{
@@ -32,7 +32,7 @@ uintptr_t NetVarManager::GetOffset(RecvTable* table, const char* tableName, cons
 			}
 			if (prop->recvTable)
 			{
-				intptr_t offset = GetOffset(prop->recvTable, tableName, netVarName);
+				intptr_t offset = GetOffset(prop->recvTable, netVarName);
 				if (offset)
 				{
 					return offset + prop->offset;
@@ -51,7 +51,7 @@ uintptr_t NetVarManager::GetNetVarOffset(const char* tableName, const char* netV
 		{
 			if (!_strcmpi(currClient->pRecvTable->netTableName, tableName))
 			{
-				return GetOffset(currClient->pRecvTable, tableName, netVarName);
+				return GetOffset(currClient->pRecvTable, netVarName);
 			}
 		}
 	}
